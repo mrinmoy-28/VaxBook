@@ -1,5 +1,5 @@
 # VaxBook — Hospital Vaccine Search & Slot Booking
-
+[Vax-Book](https://vax-book.vercel.app/)
 Full-stack hackathon project. Citizens search hospitals, compare vaccine prices, and book daily slots. Hospital admins manage hospitals, vaccines, and capacity.
 
 ## Repo Structure
