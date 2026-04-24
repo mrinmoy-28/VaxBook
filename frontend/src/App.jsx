@@ -12,6 +12,7 @@ import ManageHospitals from './pages/admin/ManageHospitals';
 import ManageVaccines from './pages/admin/ManageVaccines';
 import ManageSlots from './pages/admin/ManageSlots';
 import AdminBookings from './pages/admin/Bookings';
+import CreateAdmin from './pages/admin/CreateAdmin';
 import RequireAuth from './components/RequireAuth';
 import RequireAdmin from './components/RequireAdmin';
 
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/admin/vaccines" element={<RequireAdmin><ManageVaccines /></RequireAdmin>} />
           <Route path="/admin/slots" element={<RequireAdmin><ManageSlots /></RequireAdmin>} />
           <Route path="/admin/bookings" element={<RequireAdmin><AdminBookings /></RequireAdmin>} />
+          <Route path="/admin/create-admin" element={<RequireAdmin><CreateAdmin /></RequireAdmin>} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

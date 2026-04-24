@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: '', email: '', password: '', phone: '', role: 'citizen' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', phone: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -49,13 +49,6 @@ export default function Register() {
           <div>
             <label className="label">Password (min 6)</label>
             <input name="password" type="password" required placeholder="••••••••" value={form.password} onChange={onChange} className="input" />
-          </div>
-          <div>
-            <label className="label">Role</label>
-            <select name="role" value={form.role} onChange={onChange} className="input">
-              <option value="citizen">Citizen</option>
-              <option value="admin">Hospital Admin</option>
-            </select>
           </div>
           {error && (
             <div className="rounded-xl border border-rose-200/70 bg-rose-50/60 px-4 py-3 text-sm text-rose-700">
