@@ -1,5 +1,6 @@
 const Booking = require('../models/Booking');
 const Slot = require('../models/Slot');
+const User = require('../models/User');
 
 exports.bookingsByDay = async (req, res, next) => {
   try {
@@ -31,5 +32,20 @@ exports.stats = async (req, res, next) => {
     }, 0);
     
     res.json({ totalBookings, confirmedToday, availableSlots, activeHospitals: hospitals });
+  } catch (err) { next(err); }
+};
+
+exports.createAdmin = async (req, res, next) => {
+  try {
+    const { name, email, password } = req.body || {};
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: 'name, email and password are required' });
+    }
+
+    const exists = await User.findOne({ email });
+    if (exists) return res.status(409).json({ message: 'Email already registered' });
+
+    const user = await User.create({ name, email, password, role: 'admin' });
+    return res.status(201).json({ user });
   } catch (err) { next(err); }
 };

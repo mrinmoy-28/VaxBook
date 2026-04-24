@@ -5,5 +5,6 @@ const requireAdmin = require('../middleware/requireAdmin');
 
 router.get('/bookings', auth, requireAdmin, ctrl.bookingsByDay);
 router.get('/stats', auth, requireAdmin, ctrl.stats);
+router.post('/create-admin', auth, requireAdmin, ctrl.createAdmin);
 
 module.exports = router;

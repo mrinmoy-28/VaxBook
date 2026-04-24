@@ -11,10 +11,10 @@ function signToken(user) {
 
 exports.register = async (req, res, next) => {
   try {
-    const { name, email, password, phone, role } = req.body;
+    const { name, email, password, phone } = req.body;
     const exists = await User.findOne({ email });
     if (exists) return res.status(409).json({ message: 'Email already registered' });
-    const user = await User.create({ name, email, password, phone, role: role === 'admin' ? 'admin' : 'citizen' });
+    const user = await User.create({ name, email, password, phone, role: 'citizen' });
     const token = signToken(user);
     res.status(201).json({ user, token });
   } catch (err) { next(err); }
